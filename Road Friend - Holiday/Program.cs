@@ -1,6 +1,6 @@
 ﻿string input;  // Kullanıcıdan alacağımız lokasyon değişkeni
 string planagain; // Tekrar plan yapmak isteyip istenmediğine göre döngüye geri dönecek değişken
-int travelinput; // Kullanıcıdan alacağımız ulaşım değişkeni
+string travelinput; // Kullanıcıdan alacağımız ulaşım değişkeni
 int person = 0;  // kişi sayısı için kullanacağımız değişken
 int travelcost = 0; // ulaşım fiyatları için kullanacağımız değişken
 int price = 0; // paket fiyatları için kullanacağımız değişken
@@ -29,8 +29,9 @@ do {
     }
 
     Console.WriteLine("Kaç kişilik bir tatil planlamak istiyorsunuz ? ");  // Kişi sayısını aldığımız satır
+ 
     person = Convert.ToInt32(Console.ReadLine());
-
+    
 
     switch(input)  // paket seçimlerinin yapıldığı ve fiyatlarının price değişkenine saklandığı switch karar yapısı
     {
@@ -58,19 +59,20 @@ do {
         Console.WriteLine("1 - Kara yolu ( Kişi başı ulaşım tutarı gidiş-dönüş 1500 TL )");
         Console.WriteLine("2 - Hava yolu ( Kişi başı ulaşım tutarı gidiş-dönüş 4000 TL )");
         Console.WriteLine("Lütfen yukarıdaki seçeneceklerden bir tanesin seçiniz. Girişi sayı olarak yapınız.");
-        travelinput = Convert.ToInt32(Console.ReadLine());
+        travelinput =(Console.ReadLine());
 
-        if (travelinput != 1 && travelinput != 2) // İstenilen sayılar dışında bir işlem yapıldığında seçimler tekrar ekrana gelecek.
+        if (travelinput != "1" && travelinput != "2") // İstenilen sayılar dışında bir işlem yapıldığında seçimler tekrar ekrana gelecek.
         {
             Console.WriteLine("Yanlış bir giriş yaptınız. Lütfen sadece ekranda olan sayılar ile işlem yapınız.");
+            continue;
         }
 
         switch(travelinput) // Ulaşım ücretinin kişi sayısına göre hesaplanıp travelcost değişkeninde saklandığı kısım
         {
-            case 1:
+            case "1":
                 travelcost = person * 1500;
                 break;
-            case 2:
+            case "2":
                 travelcost = person * 4000;
                 break;
         }
